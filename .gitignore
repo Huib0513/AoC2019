@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+.vscode
+
 # credentials
 aoc.token
 getinput.sh
