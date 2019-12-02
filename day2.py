@@ -23,7 +23,7 @@ while (memory[instruction_pointer] != 99):
         memory[target]=parameter1*parameter2
     else:
         print("Paniek, onbekende opcode")
-        sys.exit()
+        exit()
 
     instruction_pointer = instruction_pointer + 4
 print(memory)
