@@ -26,15 +26,21 @@ def addpoints(route, start, steps):
             route.append((currentx, currenty))
 
 def intersection(lst1, lst2): 
-    lst3 = [value for value in lst1 if value in lst2] 
+    # Easy and *very* slow intersection:
+    # lst3 = [value for value in lst1 if value in lst2] 
+
+    # Use set to speed up intersection: set *will* remove duplicate entries, but that is not a problem in this case
+    temp = set(lst2) 
+    lst3 = [value for value in lst1 if value in temp] 
+
     return lst3 
 
 wire = []
 currentline = 0
 for line in lines:
     wire.append([(0,0)])
+    print(str(datetime.datetime.now()) + ": creating wire " + str(currentline))
     for segment in line.split(','):
-        print(str(datetime.datetime.now()) + ": creating wire " + str(currentline))
         addpoints(wire[currentline], wire[currentline][-1], segment)
     currentline = currentline + 1
 
