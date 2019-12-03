@@ -8,24 +8,29 @@ def addpoints(route, start, steps):
     currenty = start[1]
 
     if steps[0] == 'R':
-        for step in range(int(steps[1:])):
+        for _ in range(int(steps[1:])):
             currentx = currentx + 1
             route.append((currentx, currenty))
     elif steps[0] == 'L':
-        for step in range(int(steps[1:])):
+        for _ in range(int(steps[1:])):
             currentx = currentx - 1
             route.append((currentx, currenty))
     elif steps[0] == 'U':
-        for step in range(int(steps[1:])):
+        for _ in range(int(steps[1:])):
             currenty = currenty + 1
             route.append((currentx, currenty))
     elif steps[0] == 'D':
-        for step in range(int(steps[1:])):
+        for _ in range(int(steps[1:])):
             currenty = currenty - 1
             route.append((currentx, currenty))
 
 def intersection(lst1, lst2): 
-    lst3 = [value for value in lst1 if value in lst2] 
+    # Easy and *very* slow intersection:
+    # lst3 = [value for value in lst1 if value in lst2] 
+
+    # Use set to speed up intersection: set *will* remove duplicate entries, but that is not a problem in this case
+    temp = set(lst2) 
+    lst3 = [value for value in lst1 if value in temp] 
     return lst3 
 
 wire = []

@@ -9,19 +9,19 @@ def addpoints(route, start, steps):
     currenty = start[1]
 
     if steps[0] == 'R':
-        for step in range(int(steps[1:])):
+        for _ in range(int(steps[1:])):
             currentx = currentx + 1
             route.append((currentx, currenty))
     elif steps[0] == 'L':
-        for step in range(int(steps[1:])):
+        for _ in range(int(steps[1:])):
             currentx = currentx - 1
             route.append((currentx, currenty))
     elif steps[0] == 'U':
-        for step in range(int(steps[1:])):
+        for _ in range(int(steps[1:])):
             currenty = currenty + 1
             route.append((currentx, currenty))
     elif steps[0] == 'D':
-        for step in range(int(steps[1:])):
+        for _ in range(int(steps[1:])):
             currenty = currenty - 1
             route.append((currentx, currenty))
 
