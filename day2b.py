@@ -5,7 +5,7 @@ startmemory = [int(i) for i in open('day2.input').read().split(",")]
 #Example program
 #memory = [1,1,1,4,99,5,6,0,99]
 
-def loop(memory):
+def run(memory):
     instruction_pointer = 0
     while (memory[instruction_pointer] != 99):
         opcode = memory[instruction_pointer]
@@ -25,13 +25,14 @@ def loop(memory):
 
         instruction_pointer = instruction_pointer + 4
 
+    return(memory[0])
+
 
 for noun in range(100):
     for verb in range(100):
         currentmemory = startmemory.copy()
         currentmemory[1] = noun
         currentmemory[2] = verb
-        loop(currentmemory)
-        if currentmemory[0] == 19690720:
+        if run(currentmemory) == 19690720:
             print("noun = " + str(noun) + ", verb = " + str(verb) + ", result = " + str(noun*100 + verb) + "(" + str(currentmemory[0]) + ")")
             exit()
