@@ -19,7 +19,7 @@ def getparameter(memory, pointer, type, offset):
 def run(startmemory, inputs, nrofoutputs):
     instruction_pointer =  relative_base = input_pointer = 0
     outputs = []
-    input = None
+    new_input = None
     
     memory = defaultdict(int)
     for i in range(0, len(startmemory)):
@@ -54,7 +54,7 @@ def run(startmemory, inputs, nrofoutputs):
             #parameter1 = memory[instruction_pointer+1]
             #print(opcode, paramtype, parameter1)
             # Do input
-            #memory[parameter1] = int(input("Please provide input: "))
+            #memory[parameter1] = int(input("Please provide input" + str(inputs) + ": "))
             memory[parameter1] = inputs[input_pointer]
             input_pointer += 1
             instruction_pointer = instruction_pointer + 2
@@ -65,11 +65,11 @@ def run(startmemory, inputs, nrofoutputs):
             instruction_pointer = instruction_pointer + 2
             outputs.append(parameter1)
             if len(outputs) == nrofoutputs:
-                input = yield outputs
+                new_input = yield outputs
                 outputs = []
-                if input is not None:
-                    inputs += input
-                    input = None
+                if new_input is not None:
+                    inputs += new_input
+                    new_input = None
         elif opcode=='05':
             parameter1 = getparameter(memory, instruction_pointer+1, paramtype[0], relative_base)
             parameter2 = getparameter(memory, instruction_pointer+2, paramtype[1], relative_base)
